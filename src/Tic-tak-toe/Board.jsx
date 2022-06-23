@@ -20,7 +20,6 @@ export function Board() {
         playerKey: currentPlayer,
       };
       currentPlayer === "X" ? setCurrentPlayer("O") : setCurrentPlayer("X");
-      setBlockSegment({ ...currentBlockSegment });
       calculateWinner(currentBlockSegment);
     }
   };
@@ -49,6 +48,9 @@ export function Board() {
         xPlays.includes(winningGames[i][1]) &&
         xPlays.includes(winningGames[i][2])
       ) {
+        boardStanding[winningGames[i][0]].winningSquare = true;
+        boardStanding[winningGames[i][1]].winningSquare = true;
+        boardStanding[winningGames[i][2]].winningSquare = true;
         setWinner("X");
         break;
       } else if (
@@ -56,10 +58,15 @@ export function Board() {
         oPlays.includes(winningGames[i][1]) &&
         oPlays.includes(winningGames[i][2])
       ) {
+        boardStanding[winningGames[i][0]].winningSquare = true;
+        boardStanding[winningGames[i][1]].winningSquare = true;
+        boardStanding[winningGames[i][2]].winningSquare = true;
         setWinner("O");
         break;
       }
     }
+
+    setBlockSegment({ ...boardStanding });
   };
 
   const resetBoard = (e) => {

@@ -5,7 +5,9 @@ export function Block({ segmentId, handleSegmentClick, playerValue }) {
   return (
     <>
       <div
-        className={styles.block}
+        className={
+          playerValue?.winningSquare ? styles.winningBlock : styles.block
+        }
         onClick={(e) => handleSegmentClick(e, segmentId)}
       >
         {playerValue?.playerKey}

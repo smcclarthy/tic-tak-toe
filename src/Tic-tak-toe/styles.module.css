@@ -29,3 +29,18 @@
   color: #fff;
   align-items: center;
 }
+
+.winningBlock {
+  margin: 10px;
+  height: 180px;
+  width: 180px;
+  cursor: pointer;
+  background-color: greenyellow;
+  display: flex;
+  text-align: center;
+  font-size: 50px;
+  justify-content: center;
+  font-weight: 500;
+  color: #fff;
+  align-items: center;
+}
