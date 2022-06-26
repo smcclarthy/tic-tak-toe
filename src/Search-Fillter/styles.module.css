@@ -1,0 +1,9 @@
+.formWrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.inputGroup {
+  display: flex;
+  justify-content: space-around;
+  width: 600px;
+}
