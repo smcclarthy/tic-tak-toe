@@ -24,8 +24,6 @@ export function Board() {
     }
   };
   const calculateWinner = (boardStanding) => {
-    const xPlays = [];
-    const oPlays = [];
     const winningGames = [
       [0, 1, 2],
       [3, 4, 5],
@@ -37,16 +35,11 @@ export function Board() {
       [0, 4, 8],
     ];
 
-    for (const [_, item] of Object.entries(boardStanding)) {
-      if (item.playerKey === "X") xPlays.push(item.index);
-      else if (item.playerKey === "O") oPlays.push(item.index);
-    }
-
     for (let i = 0; i < winningGames.length; i++) {
       if (
-        xPlays.includes(winningGames[i][0]) &&
-        xPlays.includes(winningGames[i][1]) &&
-        xPlays.includes(winningGames[i][2])
+        boardStanding[winningGames[i][0]]?.playerKey === "X" &&
+        boardStanding[winningGames[i][1]]?.playerKey === "X" &&
+        boardStanding[winningGames[i][2]]?.playerKey === "X"
       ) {
         boardStanding[winningGames[i][0]].winningSquare = true;
         boardStanding[winningGames[i][1]].winningSquare = true;
@@ -54,9 +47,9 @@ export function Board() {
         setWinner("X");
         break;
       } else if (
-        oPlays.includes(winningGames[i][0]) &&
-        oPlays.includes(winningGames[i][1]) &&
-        oPlays.includes(winningGames[i][2])
+        boardStanding[winningGames[i][0]]?.playerKey === "O" &&
+        boardStanding[winningGames[i][1]]?.playerKey === "O" &&
+        boardStanding[winningGames[i][2]]?.playerKey === "O"
       ) {
         boardStanding[winningGames[i][0]].winningSquare = true;
         boardStanding[winningGames[i][1]].winningSquare = true;
